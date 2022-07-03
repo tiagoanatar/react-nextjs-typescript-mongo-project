@@ -1,0 +1,10 @@
+.theme-radio {
+  padding: 1rem;
+  background-color: dimgray;
+  color: white;
+  border-radius: 1rem;
+  margin-bottom: 0,5rem;
+  &-checked {
+    background-color: black;
+  }
+}
