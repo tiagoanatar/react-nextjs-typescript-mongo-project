@@ -14,7 +14,11 @@ const Home: NextPage = () => {
 
       <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
 
-      <BaseRadio label="Radio Text 01" name="radio-set-01" value="radio value 1" id='radio-01' />
+      <form>
+        <BaseRadio label="Radio Text 01" name="radio-set-01" value="radio value 1" id='radio-01' />
+        <BaseRadio label="Radio Text 01" name="radio-set-01" value="radio value 2" id='radio-02' />
+        <BaseRadio label="Radio Text 01" name="radio-set-01" value="radio value 2" id='radio-03' />
+      </form>
     </div>
   )
 }

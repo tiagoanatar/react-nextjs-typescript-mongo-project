@@ -1,11 +1,11 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface Radio {
   name: string;
   label: string;
   id: string;
   value: string;
-  alternate: boolean
+  alternate?: boolean
 }
 
 const defaultProps = {
@@ -24,7 +24,8 @@ export const BaseRadio = ({ name, label, id, value, alternate = false }: Radio) 
 
   const radioCheck = () => {
     setData({...data, checked: !data.checked});
-    console.log(data);
+    //input.current.checked = !input.current.checked
+    console.log(input.current?.value);
   };
 
   return (
@@ -36,6 +37,7 @@ export const BaseRadio = ({ name, label, id, value, alternate = false }: Radio) 
         value={value}
         ref={input}
         checked={data.checked}
+        onChange={() => radioCheck()}
       />
       <label htmlFor={id}>{label}</label>
     </div>
