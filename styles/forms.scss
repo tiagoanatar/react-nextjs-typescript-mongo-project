@@ -8,4 +8,10 @@
   &-checked {
     background-color: black;
   }
+  &-alt-true {
+    border: 1px solid blue;
+  }
+  &-alt-false {
+    border: 1px solid red;
+  }
 }
