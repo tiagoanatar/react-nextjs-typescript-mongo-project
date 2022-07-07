@@ -1,16 +1,40 @@
 import type { NextPage } from "next";
-import Head from "next/head";
+import { InferGetStaticPropsType } from 'next'
 import Image from "next/image";
 import { useState } from "react";
 //import styles from '../styles/Home.module.scss';
 
 import { BaseButton } from "../components/base/BaseButton";
-import { BaseRadio } from "../components/base/BaseRadio";
 import { LayoutHeader } from "../components/LayoutHeader";
+import Link from 'next/link'
 
-const Home: NextPage = () => {
+interface User {
+  id: string
+  name: string
+  username: string
+  email: string
+  address: string
+  phone: string
+  website: string
+  company: string
+}
 
-  const [radioData, setRadioData] = useState<string | undefined>('')
+interface Users {
+  users: User[]
+}
+
+export const getStaticProps = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users')
+  const users: User[] = await res.json()
+
+  return {
+    props: {
+      users,
+    },
+  }
+}
+
+const Home: NextPage<Users> = ({ users }) => {
 
   return (
     <div>
@@ -21,34 +45,14 @@ const Home: NextPage = () => {
 
       <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
 
-      {radioData}
-      <form>
-        <BaseRadio
-          label="Radio Text 01"
-          name="radio-set-01"
-          value="radio value 1"
-          id="radio-01"
-          alternate={true}
-          effectValue={radioData}
-          effectFunction={setRadioData}
-        />
-        <BaseRadio
-          label="Radio Text 02"
-          name="radio-set-01"
-          value="radio value 2"
-          id="radio-02"
-          effectValue={radioData}
-          effectFunction={setRadioData}
-        />
-        <BaseRadio
-          label="Radio Text 03"
-          name="radio-set-01"
-          value="radio value 3"
-          id="radio-03"
-          effectValue={radioData}
-          effectFunction={setRadioData}
-        />
-      </form>
+      {users.map((item, index) => {
+        return (<div key={index}>{ item.name }</div>)
+      })}
+
+      <Link href="/radio-input">
+          <a>Radui Input</a>
+        </Link>
+      
     </div>
   );
 };
