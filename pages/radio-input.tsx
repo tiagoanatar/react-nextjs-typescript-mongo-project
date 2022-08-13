@@ -3,23 +3,17 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 //import styles from '../styles/Home.module.scss';
+import { Main } from "../components/layouts/main";
+import { Admin } from "../components/layouts/admin";
 
-import { BaseButton } from "../components/base/BaseButton";
 import { BaseRadio } from "../components/base/BaseRadio";
-import { LayoutHeader } from "../components/layout/LayoutHeader";
 
-const Home: NextPage = () => {
+const Home = () => {
 
   const [radioData, setRadioData] = useState<string | undefined>('')
 
   return (
-    <div>
-      <LayoutHeader
-        blockA={<BaseButton label="Header Button" type="button" />}
-        blockB="Top Text"
-      />
-      
-
+    <>
       {radioData}
       <form>
         <BaseRadio
@@ -48,8 +42,11 @@ const Home: NextPage = () => {
           effectFunction={setRadioData}
         />
       </form>
-    </div>
+    </>
   );
 };
+
+// Choose layout
+Home.layout = Admin
 
 export default Home;
