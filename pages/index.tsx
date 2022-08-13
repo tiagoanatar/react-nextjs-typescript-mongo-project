@@ -5,7 +5,7 @@ import { useState } from "react";
 //import styles from '../styles/Home.module.scss';
 
 import { BaseButton } from "../components/base/BaseButton";
-import { LayoutHeader } from "../components/LayoutHeader";
+import { LayoutHeader } from "../components/layout/LayoutHeader";
 import Link from 'next/link'
 
 interface User {
