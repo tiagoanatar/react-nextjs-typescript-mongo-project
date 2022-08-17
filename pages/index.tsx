@@ -7,6 +7,7 @@ import { useState } from "react";
 import { BaseButton } from "../components/base/BaseButton";
 import { LayoutHeader } from "../components/structure/LayoutHeader";
 import Link from 'next/link'
+import { Admin } from "../components/layouts/admin";
 
 interface User {
   id: string
@@ -34,7 +35,7 @@ export const getStaticProps = async () => {
   }
 }
 
-const Home: NextPage<Users> = ({ users }) => {
+const Home = ({ users }:Users) => {
 
   return (
     <div>
@@ -107,5 +108,8 @@ const Home: NextPage<Users> = ({ users }) => {
     </div>
   );
 };
+
+// Choose layout
+Home.layout = Admin
 
 export default Home;
