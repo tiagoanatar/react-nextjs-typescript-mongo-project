@@ -2,3 +2,35 @@
 @import '../styles/globals.scss';
 @import '../styles/header.scss';
 @import '../styles/forms.scss';
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+
+  .card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+
+    &-title {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+  
+    &-email {
+      color: chartreuse;
+    }
+
+    &-button {
+      border: none;
+      border-radius: 0.25rem;
+      background-color: darkblue;
+      color: #fff;
+      font-size: 1.5rem;
+      width: 100%;
+    }
+  }
+}

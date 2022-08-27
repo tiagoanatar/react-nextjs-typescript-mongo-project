@@ -1,9 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { Context } from '../components/store';
 import { Blank } from "../components/layouts/blank";
 
-const Home = () => {
+const Test = () => {
 
-  const [data, setData] = useState([])
+  interface User {
+    userId: 1,
+    id: 1,
+    title: string,
+    completed: boolean
+  }
+
+  const [data, setData] = useState<User[]>([])
+
+  const [state, dispatch] = useContext(Context);
 
   useEffect(() => {
     async function fetchData(){
@@ -12,18 +22,39 @@ const Home = () => {
       setData(info)
     }
     fetchData()
-    console.log(data)
   },[])
+
+  console.log(data)
 
   return (
     <>
-      <h1>Test Page</h1>
-      
+      <h1>Test Page  - { state.id }</h1>
+      <div style={container}>
+        {data.length > 0 ? data.map((item, index) => {
+          return (
+            <div key={index} style={card}>
+              <h6>{item.title} / {item.id}</h6>
+            </div>
+          )
+        }) : null}
+      </div>
     </>
   );
 };
 
 // Choose layout
-Home.layout = Blank
+Test.layout = Blank
 
-export default Home;
+// Styles
+const container = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '20px'
+}
+
+const card = {
+  border: '3px solid #ccc',
+  width: '20%'
+}
+
+export default Test;

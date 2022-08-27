@@ -6,6 +6,8 @@ import { ReactElement } from 'react'
 
 import PageWithLayoutType from "../types/pageWithLayouts";
 
+import { Store } from '../components/store';
+
 type AppLayoutProps = AppProps & {
   Component: PageWithLayoutType
   pageProps: any
@@ -24,9 +26,11 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
     Component.layout || ((children: ReactElement) => <>{children}</>)
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Store>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Store>
   )
 }
 

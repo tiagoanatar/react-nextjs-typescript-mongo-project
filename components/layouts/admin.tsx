@@ -1,4 +1,5 @@
-import { ComponentType, ReactNode } from "react";
+import Link from 'next/link'
+import { ReactNode } from "react";
 import { BaseButton } from "../base/BaseButton";
 import { LayoutHeader } from "../structure/LayoutHeader";
 import type { LayoutProps } from "../../types/pageWithLayouts";
@@ -14,7 +15,9 @@ export const Admin:LayoutProps = ({ children }) => {
     <>
       <LayoutHeader
         blockA={<BaseButton label="Header Button" type="button" />}
-        blockB="Top Text"
+        blockB={<Link href="/test">
+          <a>test</a>
+        </Link>}
       />
       <h1>Admin</h1>
       <hr />
