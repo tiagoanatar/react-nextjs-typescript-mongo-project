@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { ReactElement } from 'react'
 
-import PageWithLayoutType from "../types/pageWithLayouts";
+import store from '../store/store'
+import { Provider } from 'react-redux'
 
-import { Store } from '../components/store';
+import PageWithLayoutType from "../types/pageWithLayouts";
 
 type AppLayoutProps = AppProps & {
   Component: PageWithLayoutType
@@ -26,11 +27,11 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
     Component.layout || ((children: ReactElement) => <>{children}</>)
 
   return (
-    <Store>
+    <Provider store={store}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </Store>
+    </Provider>
   )
 }
 

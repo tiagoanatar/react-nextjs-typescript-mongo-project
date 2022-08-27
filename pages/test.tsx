@@ -1,6 +1,15 @@
 import { useState, useEffect, useContext } from "react";
-import { Context } from '../components/store';
 import { Blank } from "../components/layouts/blank";
+
+import { useAppSelector, useAppDispatch } from '../store/hooks'
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  incrementAsync,
+  incrementIfOdd,
+  selectCount,
+} from '../store/counterSlice'
 
 const Test = () => {
 
@@ -13,8 +22,6 @@ const Test = () => {
 
   const [data, setData] = useState<User[]>([])
 
-  const [state, dispatch] = useContext(Context);
-
   useEffect(() => {
     async function fetchData(){
       const res = await fetch('https://jsonplaceholder.typicode.com/todos')
@@ -26,9 +33,12 @@ const Test = () => {
 
   console.log(data)
 
+  // global state
+  const count = useAppSelector(selectCount)
+
   return (
     <>
-      <h1>Test Page  - { state.id }</h1>
+      <h1>Test Page  - {count}</h1>
       <div style={container}>
         {data.length > 0 ? data.map((item, index) => {
           return (
