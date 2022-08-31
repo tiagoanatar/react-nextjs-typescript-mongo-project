@@ -1,15 +1,8 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Blank } from "../components/layouts/blank";
+import { useTest } from "../hooks/useTest";
 
-import { useAppSelector, useAppDispatch } from '../store/hooks'
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  incrementIfOdd,
-  selectCount,
-} from '../store/counterSlice'
+import { useQuery } from "@tanstack/react-query";
 
 const Test = () => {
 
@@ -20,7 +13,7 @@ const Test = () => {
     completed: boolean
   }
 
-  const [data, setData] = useState<User[]>([])
+  const [info, setData] = useState<User[]>([])
 
   useEffect(() => {
     async function fetchData(){
@@ -31,16 +24,21 @@ const Test = () => {
     fetchData()
   },[])
 
-  console.log(data)
+  const {test, customSetTest} = useTest()
+  //setGlobalVariable(567)
 
-  // global state
-  const count = useAppSelector(selectCount)
+  function getVar(){
+    console.log(data)
+  }
+
+  const { data } = useQuery(['global-variable']);
 
   return (
     <>
-      <h1>Test Page  - {count}</h1>
+      <h1>Test Page</h1>
+      <button onClick={getVar}>Get Var</button>
       <div style={container}>
-        {data.length > 0 ? data.map((item, index) => {
+        {info.length > 0 ? info.map((item, index) => {
           return (
             <div key={index} style={card}>
               <h6>{item.title} / {item.id}</h6>

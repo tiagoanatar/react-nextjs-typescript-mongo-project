@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { ReactElement } from 'react'
 
-import store from '../store/store'
-import { Provider } from 'react-redux'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 
 import PageWithLayoutType from "../types/pageWithLayouts";
 
@@ -15,8 +15,10 @@ type AppLayoutProps = AppProps & {
 }
 
 function MyApp({ Component, pageProps }: AppLayoutProps) {
-  
+
   const router = useRouter();
+  const queryClient = new QueryClient();
+
   useEffect(() => {
     typeof document !== undefined
       ? require("bootstrap/dist/js/bootstrap")
@@ -27,11 +29,11 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
     Component.layout || ((children: ReactElement) => <>{children}</>)
 
   return (
-    <Provider store={store}>
-      <Layout>
+    <Layout>
+      <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
-      </Layout>
-    </Provider>
+      </QueryClientProvider>
+    </Layout>
   )
 }
 
