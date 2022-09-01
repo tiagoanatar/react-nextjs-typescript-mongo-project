@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import { Blank } from "../components/layouts/blank";
-import { useTest } from "../hooks/useTest";
-
-import { useQuery } from "@tanstack/react-query";
+import { Blank } from "../../components/layouts/blank";
 
 const Test = () => {
 
@@ -24,19 +21,9 @@ const Test = () => {
     fetchData()
   },[])
 
-  const {test, customSetTest} = useTest()
-  //setGlobalVariable(567)
-
-  function getVar(){
-    console.log(data)
-  }
-
-  const { data } = useQuery(['global-variable']);
-
   return (
     <>
-      <h1>Test Page</h1>
-      <button onClick={getVar}>Get Var</button>
+      <h1>Simple 01 - useEffect</h1>
       <div style={container}>
         {info.length > 0 ? info.map((item, index) => {
           return (

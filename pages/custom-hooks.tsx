@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Admin } from "../components/layouts/admin";
-import { useGlobalVariable } from "../hooks/useGlobalVariable";
 import { useTest } from "../hooks/useTest";
 
 import { useQuery } from "@tanstack/react-query";
@@ -29,7 +28,7 @@ const Test = () => {
       <button onClick={() => customSetTest(445)}>Set Var to 445</button> <button onClick={() => customSetTest(6)}>Set var to 6</button>
       <hr />
       <h4>Global Variable</h4>
-      <button onClick={() => setGlobalVariable(33)}>Set Var</button> <button onClick={() => getGlobalVariable()}>Get Var</button>
+
     </>
   );
 };

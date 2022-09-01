@@ -1,12 +1,8 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import { useState } from "react";
 //import styles from '../styles/Home.module.scss';
-import { Main } from "../components/layouts/main";
-import { Admin } from "../components/layouts/admin";
+import { Admin } from "../../components/layouts/admin";
 
-import { BaseRadio } from "../components/base/BaseRadio";
+import { BaseRadio } from "../../components/base/BaseRadio";
 
 const Home = () => {
 
@@ -21,7 +17,6 @@ const Home = () => {
           name="radio-set-01"
           value="radio value 1"
           id="radio-01"
-          alternate={true}
           effectValue={radioData}
           effectFunction={setRadioData}
         />
@@ -30,6 +25,7 @@ const Home = () => {
           name="radio-set-01"
           value="radio value 2"
           id="radio-02"
+          alternate={true}
           effectValue={radioData}
           effectFunction={setRadioData}
         />

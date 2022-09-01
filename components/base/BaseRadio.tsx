@@ -8,13 +8,14 @@ interface Radio {
   alternate?: boolean
   effectValue: string | undefined
   effectFunction: Dispatch<SetStateAction<string | undefined>>
+  dataTestId?: string
 }
 
 const defaultProps = {
   alternate: false
 }
 
-export const BaseRadio = ({ name, label, id, value, alternate = false, effectValue, effectFunction }: Radio) => {
+export const BaseRadio = ({ name, label, id, value, alternate, effectValue, effectFunction, dataTestId }: Radio) => {
   const input = useRef<HTMLInputElement>(null);
   const [data, setData] = useState({ checked: false });
 
@@ -24,6 +25,7 @@ export const BaseRadio = ({ name, label, id, value, alternate = false, effectVal
     alternate ? 'theme-radio-alt-true' : 'theme-radio-alt-false',
   ]
 
+  // TODO: Delete this?
   const radioCheck = () => {
     setData({...data, checked: !data.checked});
     effectFunction(input.current?.value)
@@ -46,8 +48,12 @@ export const BaseRadio = ({ name, label, id, value, alternate = false, effectVal
         value={value}
         ref={input}
         checked={data.checked}
+        data-test-id={dataTestId}
+        readOnly
       />
       <label htmlFor={id}>{label}</label>
     </div>
   );
 };
+
+BaseRadio.defaultProps = defaultProps;
