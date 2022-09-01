@@ -98,8 +98,8 @@ const Home = ({ users }:Users) => {
       })}
 
       <Link href="/radio-input">
-          <a>Radui Input</a>
-        </Link>
+        <a>Radui Input</a>
+      </Link>
       
     </div>
   );
