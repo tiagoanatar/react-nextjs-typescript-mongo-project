@@ -1,11 +1,8 @@
 import type { NextPage } from "next";
 import { InferGetStaticPropsType } from 'next'
 import Image from "next/image";
-import { useState } from "react";
 //import styles from '../styles/Home.module.scss';
 
-import { BaseButton } from "../components/base/BaseButton";
-import { LayoutHeader } from "../components/structure/LayoutHeader";
 import Link from 'next/link'
 import { Admin } from "../components/layouts/admin";
 
