@@ -8,6 +8,6 @@ export const useAsyncFetch = (key:string, url:string) => {
   }
 
   const response = useQuery([key], fetchData);
-
+  console.log(response);
   return response
 }
