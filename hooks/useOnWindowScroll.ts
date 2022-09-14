@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
-export const useOnWindowScroll = (callback: () => string) => {
-  const listener = useRef(null);
+export const useOnWindowScroll = (callback:() => unknown) => {
+  const listener = useRef<any>(null);
 
   useEffect(() => {
     if (listener.current){
