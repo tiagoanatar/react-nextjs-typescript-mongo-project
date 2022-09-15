@@ -3,14 +3,25 @@ import { Admin } from "../components/layouts/admin";
 import { useTest } from "../hooks/useTest";
 import { useHover } from "../hooks/useHover";
 import { useOnWindowScroll } from "../hooks/useOnWindowScroll";
+import { useKeyPress } from "../hooks/useKeyPress";
+import { useHash } from "../hooks/useHash";
 
 const Test = () => {
 
+  // useTest
   const {test, customSetTest} = useTest();
 
+  // useHover
   const [callbackRef, isHovering] = useHover();
 
+  // useWindowScroll
   useOnWindowScroll(() => console.log(`scroll Y: ${window.pageYOffset}`));
+
+  // useKeyPress
+  const wPressed = useKeyPress("w");
+
+  // useHash
+  const [hash, setHash] = useHash();
 
   return (
     <>
@@ -25,6 +36,14 @@ const Test = () => {
         <hr />
         <h4>Check Window Scroll</h4>
         Check console log
+        <hr />
+        <h4>Check Key Press</h4>
+        <p>The "w" key is {!wPressed ? "not " : ""}pressed!</p>
+        <hr />
+        <h4>Check Key Press</h4>
+        <p>window.location.href: {typeof window !== "undefined" ? window.location.href : null}</p>
+        <p>Edit hash: </p>
+        <input value={hash} onChange={(e) => setHash(e.target.value)} />
       </div>
     </>
   );
