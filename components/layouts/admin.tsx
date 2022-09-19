@@ -19,9 +19,13 @@ export const Admin:LayoutProps = ({ children }) => {
           <a>test</a>
         </Link>}
       />
-      <h1>Admin</h1>
-      <hr />
-      {children}
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            {children}
+          </div>
+        </div>
+      </div>
     </>
   );
 };

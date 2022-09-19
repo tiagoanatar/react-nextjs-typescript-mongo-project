@@ -1,23 +1,17 @@
-import { ComponentType, ReactNode } from "react";
-
-interface Header {
-  blockA?: ReactNode | string;
-  blockB?: ReactNode | string;
-  blockC?: ReactNode | string;
-}
+import Link from 'next/link'
+import { pages } from '../../constants/pages';
 
 export const NavBar = () => {
   return (
     <>
       <div
         className="offcanvas offcanvas-start"
-        tabindex="-1"
         id="offcanvasWithBackdrop"
         aria-labelledby="offcanvasWithBackdropLabel"
       >
         <div className="offcanvas-header">
           <h5 className="offcanvas-title" id="offcanvasWithBackdropLabel">
-            Offcanvas with backdrop
+            Menu
           </h5>
           <button
             type="button"
@@ -27,7 +21,13 @@ export const NavBar = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <p>.....</p>
+          { pages ? (
+            Object.entries(pages).map((item) => {
+              return (
+                <Link href={item[1]}><a>{item[0]}</a></Link>
+              )
+            })
+          ) : 'loading menu'}
         </div>
       </div>
     </>
