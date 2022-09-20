@@ -22,9 +22,9 @@ export const NavBar = () => {
         </div>
         <div className="offcanvas-body">
           { pages ? (
-            Object.entries(pages).map((item) => {
+            Object.entries(pages).map((item, key) => {
               return (
-                <Link href={item[1]}><a>{item[0]}</a></Link>
+                <Link key={key} href={item[1]}><a>{item[0]}</a></Link>
               )
             })
           ) : 'loading menu'}

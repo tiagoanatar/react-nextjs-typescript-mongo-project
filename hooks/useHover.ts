@@ -6,15 +6,15 @@ export const useHover = () => {
   const handleMouseOver = useCallback(() => setIsHovering(true), []);
   const handleMouseOut = useCallback(() => setIsHovering(false), []);
 
-  const nodeRef = useRef<any>();
+  const nodeRef = useRef<HTMLElement | null>(null);
 
   const callbackRef = useCallback(
-    (node:any) => {
+    (node) => {
       if (nodeRef.current) {
         nodeRef.current.removeEventListener("mouseover", handleMouseOver);
         nodeRef.current.removeEventListener("mouseout", handleMouseOut);
       }
-
+      console.log(node)
       nodeRef.current = node;
 
       if (nodeRef.current) {
